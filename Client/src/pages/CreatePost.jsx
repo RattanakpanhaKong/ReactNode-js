@@ -2,8 +2,12 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from 'yup'
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const createPost = () => {
+
+    let navigate = useNavigate();
+
     const initialValues = {
         title: "",
         postText: "",
@@ -20,10 +24,11 @@ const createPost = () => {
         axios.post("http://localhost:3001/posts", data).then((response) => {
             // setListOfPosts(response.data)
             console.log("Post Created Successfully!")
+            navigate('/')
         })
     }
   return (
-    <div>
+    <div className="flex justify-center pt-4">
       <div className="flex">
         <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
           <Form className=" items-center justify-center border-2 border-red-500 mx-10 py-2">
@@ -43,7 +48,7 @@ const createPost = () => {
               <Field name="username" className="border border-black" placeholder="Input Username..." />
             </div>
             <div className="flex justify-center items-center">
-                <button type="submit" className="border border-black rounded-md bg-blue-400">Create Post</button>
+                <button type="submit" className="rounded-lg p-2 bg-blue-500 text-white">Create Post</button>
             </div>
           </Form>
         </Formik>

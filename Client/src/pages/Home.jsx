@@ -1,8 +1,12 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+
+  let navigate = useNavigate()
+
   const [listOfPosts, setListOfPosts] = useState([]);
 
   useEffect( () => {
@@ -16,18 +20,21 @@ const Home = () => {
         return (
           <div
             id="post"
-            className="border border-1 border-black m-2 text-center rounded-lg bg-blue-500"
+            onClick={() => {
+              navigate(`/post/${value.id}`)
+            }}
+            className="border border-1 border-black my-6 text-center rounded-lg bg-blue-500"
           >
-            <div id="title" className="text-white">
+            <div id="title" className="text-white p-2">
               {value.title}
             </div>
             <div
               id="body"
-              className="h-20 bg-white flex items-center justify-center"
+              className="h-24 bg-white flex items-center justify-center"
             >
               <div>{value.postText}</div>
             </div>
-            <div id="username" className="text-white">
+            <div id="username" className="text-white p-2">
               {value.username}
             </div>
           </div>
