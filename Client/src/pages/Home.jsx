@@ -19,6 +19,7 @@ const Home = () => {
       {listOfPosts.map((value, key) => {
         return (
           <div
+            key={key}
             id="post"
             onClick={() => {
               navigate(`/post/${value.id}`)
