@@ -31,7 +31,7 @@ const createPost = () => {
     <div className="flex justify-center pt-4">
       <div className="flex">
         <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
-          <Form className=" items-center justify-center border-2 border-red-500 mx-10 py-2">
+          <Form className=" items-center justify-center border-2 border-black p-4 mx-10 py-2">
             <div className="flex justify-between gap-20 my-2">
               <label>Title: </label>
               <ErrorMessage name="title" component="span" className="text-red-500"/>
