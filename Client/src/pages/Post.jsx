@@ -26,7 +26,7 @@ const Post = () => {
         if (response.data.error) {
           alert(response.data.error);
         } else {
-          const commentToAdd = { commentBody: newComment };
+          const commentToAdd = { commentBody: newComment, username: response.data.username };
           setComments([...comments, commentToAdd]);
           setNewComment("");
         }
@@ -84,7 +84,7 @@ const Post = () => {
           {comments.map((comment, key) => {
             return (
               <div key={key} className="border border-black my-2">
-                <p>{comment.commentBody}</p>
+                <p>{comment.commentBody} - {comment.username}</p>
               </div>
             );
           })}
